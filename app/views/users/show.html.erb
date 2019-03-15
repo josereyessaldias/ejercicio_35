@@ -1,0 +1,6 @@
+<h1>Este es el Perfil de <%= @user.nombre %></h1>
+
+<h5>Ella vende:</h5>
+<% @productos.each do |producto|%>
+	<%= producto.nombre %><br>
+<% end %>

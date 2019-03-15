@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  get 'user/:id', to: 'users#show', as: 'user'
   devise_for :users, controllers: {
   	registrations: 'users/registrations'
   }
-
 
   resources :products
   root 'products#index'

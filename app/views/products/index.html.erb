@@ -14,7 +14,7 @@
         <p class="card-text"><%= product.descripcion %></p>
         <p class="card-text">Valor: $<%= product.precio %></p>
         <div>
-          <%= link_to 'Vendedor', :class => "btn btn-light btn-sm" %>
+          Vende: <%= link_to product.user.nombre, user_path(product.user.id) %>
         </div><br>
         <div>
           <%= link_to 'Show', product, :class => "btn btn-light btn-sm" %>
