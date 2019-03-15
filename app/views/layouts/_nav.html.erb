@@ -1,15 +1,28 @@
 <ul class="nav bg-light">
   <li class="nav-item">
-    <a class="nav-link" href="#">Active</a>
+    <a class="nav-link" href="#"></a>
   </li>
+  
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <% if user_signed_in? %>
+      <span class="nav-link"><%= current_user.nombre %></span>
+    <% else %>
+      <%= link_to 'Ingresar', new_user_session_path, :class => 'nav-link' %>
+    <% end %>
   </li>
+
   <li class="nav-item">
   	<% if user_signed_in? %>
-  		<%= link_to 'Salir', destroy_user_session_path, data-method="delete", :class => 'nav-link' %>
+  		<%= link_to 'Salir', destroy_user_session_path, method: :delete, :class => 'nav-link' %>
   	<% else %>
-    	<%= link_to 'Registrarse', new_user_session_path, :class => 'nav-link' %>
+    	<%= link_to 'Registrarse', new_user_registration_path, :class => 'nav-link' %>
+    <% end %>
+  </li>
+
+  <li class="nav-item">
+    <% if user_signed_in? %>
+      <%= link_to 'Nuevo Producto a la Venta', new_product_path, :class => 'nav-link' %>
     <% end %>
   </li>
 </ul>
+
