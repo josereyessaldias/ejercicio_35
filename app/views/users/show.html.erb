@@ -2,5 +2,13 @@
 
 <h5>Ella vende:</h5>
 <% @productos.each do |producto|%>
-	<%= producto.nombre %><br>
+	<%= producto.nombre %>
+	<% if current_user.id == producto.user_id %>
+
+		<%= link_to 'Show', producto, :class => "btn btn-light btn-sm" %>
+		<%= link_to 'Edit', edit_product_path(producto), :class => "btn btn-light btn-sm"  %>
+	    <%= link_to 'Destroy', producto, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-light btn-sm"  %>
+	    
+	<% end %>
+	<br>
 <% end %>

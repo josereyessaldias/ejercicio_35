@@ -1,11 +1,23 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :comprar]
+  before_action :authenticate_user!, except: [:index, :vendidos]
 
+
+  def comprar
+    @product.compra_id = current_user.id
+    @product.save
+    redirect_to root_path, notice: 'Producto fue comprado'
+
+  end
   # GET /products
   # GET /products.json
   def index
     @products = Product.where(compra_id: nil)
+    @products = @products.order("random()")
+  end
+
+  def vendidos
+    @products = Product.where.not(compra_id: nil)
   end
 
   # GET /products/1
@@ -71,6 +83,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:nombre, :descripcion, :precio)
+      params.require(:product).permit(:nombre, :descripcion, :precio, :compra_id)
     end
 end

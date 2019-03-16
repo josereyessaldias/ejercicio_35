@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Productos a la Venta</h1>
+<h1>Productos Vendidos</h1>
 
 
   
@@ -14,12 +14,13 @@
         <p class="card-text"><%= product.descripcion %></p>
         <p class="card-text">Valor: $<%= product.precio %></p>
         <div>
-          Vende: <%= link_to product.user.nombre, user_path(product.user.id) %>
-        </div><br>
-        
-         <div>
-          <%= link_to 'Comprar', comprar_path(product), method: :patch, :class => "btn btn-light btn-sm" %>
+          Vendió: <%= link_to product.user.nombre, user_path(product.user.id) %>
         </div>
+        <div>
+          Compró: <%= link_to User.find(product.compra_id).nombre, user_path(product.compra_id) %>
+        </div>
+        <br>
+        
     
       </div>    
     </div><br>
