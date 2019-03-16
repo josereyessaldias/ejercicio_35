@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'user/:id', to: 'users#show', as: 'user'
+  get 'user_compra/:id', to: 'users#show_compra', as: 'user_compra'
   devise_for :users, controllers: {
   	registrations: 'users/registrations'
   }

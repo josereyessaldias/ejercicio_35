@@ -1,0 +1,6 @@
+<h1>Estas son las compras de: <%= @user.nombre %></h1>
+
+<h5>Ella ha comprado:</h5>
+<% @productos.each do |producto|%>
+	<%= producto.nombre %><br>
+<% end %>
